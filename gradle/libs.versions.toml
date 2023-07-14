@@ -1,0 +1,67 @@
+[versions]
+androidApplication = "8.0.2"
+androidKotlin = "1.9.0"
+ktlint = "11.3.2"
+detekt = "1.22.0-RC3"
+hilt = "2.47"
+moshi = "1.15.0"
+core-ktx = "1.10.1"
+timber = "5.0.1"
+navigation = "2.6.0"
+appcompat = "1.6.1"
+coil = "2.4.0"
+constraint = "2.1.4"
+material = "1.9.0"
+room = "2.6.0-alpha01"
+retrofit = "2.9.0"
+okhhtp = "4.11.0"
+core-test = "2.2.0"
+coroutines-test = "1.7.0"
+junit = "4.13.2"
+mockk = "1.13.5"
+ui-junit = "1.1.4"
+
+[plugins]
+plugin-application = { id = "com.android.application", version.ref = "androidApplication" }
+plugin-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "androidKotlin" }
+plugin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+plugin-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+plugin-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+
+[libraries]
+android-core = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+nav-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+nav-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+room-kapt = { module = "androidx.room:room-compiler", version.ref = "room" }
+moshi-kapt = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+hilt-kapt = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-test-kapt = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
+logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhhtp" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhhtp" }
+moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+
+# Test
+core-test = { module = "androidx.arch.core:core-testing", version.ref = "core-test" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines-test" }
+kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "androidKotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+[bundles]
+common = ["android-core", "hilt", "timber"]
+ui = ["appcompat", "coil", "constraint", "material", "nav-fragment", "nav-ui"]
+data = ["logging", "okhttp", "moshi-adapters", "moshi-kotlin", "retrofit", "retrofit-moshi", "room-ktx", "room-runtime"]
+test = ["core-test", "coroutines-test", "kotlin-junit", "mockk"]
