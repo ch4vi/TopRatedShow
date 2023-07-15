@@ -10,11 +10,6 @@ import javax.inject.Inject
 class GetTVShows @Inject constructor(
     private val repository: TVShowRepository
 ) {
-
-    operator fun invoke(page: Int): Flow<Page> = flow {
-        emit(repository.getTopRatedTVShows(page))
-    }
-
     operator fun invoke(page: Page?): Flow<Page> = flow {
         when {
             page == null -> emit(repository.getTopRatedTVShows(START_PAGE))

@@ -12,7 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
-class RetrofitConfiguration() {
+class RetrofitConfiguration {
     companion object {
         private const val TIMEOUT: Long = 100
     }

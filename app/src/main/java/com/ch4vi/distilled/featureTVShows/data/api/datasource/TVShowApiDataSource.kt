@@ -1,5 +1,6 @@
 package com.ch4vi.distilled.featureTVShows.data.api.datasource
 
+import com.ch4vi.distilled.featureTVShows.data.api.datasource.TVShowApiMapper.toDomain
 import com.ch4vi.distilled.featureTVShows.data.api.service.TVShowsService
 import com.ch4vi.distilled.featureTVShows.domain.model.Failure
 import com.ch4vi.distilled.featureTVShows.domain.model.Page
@@ -26,7 +27,7 @@ class TVShowApiDataSource @Inject constructor(
             is ConnectException,
             is SocketTimeoutException,
             is UnknownHostException,
-            is HttpException -> Failure.NetworkFailure()
+            is HttpException -> Failure.NetworkFailure(failure.message)
 
             is Failure -> failure
             else -> Failure.UnexpectedFailure(failure.message)
