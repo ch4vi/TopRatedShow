@@ -1,7 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import java.io.ByteArrayOutputStream
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -10,7 +8,7 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
-val appName = "Top Rated Shows"
+val appName = "Top Rated TV Shows"
 
 android {
     namespace = "com.ch4vi.distilled"
