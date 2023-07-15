@@ -2,15 +2,13 @@ package com.ch4vi.distilled.featureTVShows.presentation.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.ch4vi.distilled.featureTVShows.domain.model.Page
+import com.ch4vi.distilled.featureTVShows.domain.model.SortType
 import com.ch4vi.distilled.featureTVShows.domain.model.TVShow
 import com.ch4vi.distilled.featureTVShows.domain.usecase.GetTVShows
-import com.ch4vi.distilled.featureTVShows.domain.util.Event
-import com.ch4vi.distilled.featureTVShows.domain.util.EventObserver
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -23,7 +21,6 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertIs
 
 @ExperimentalCoroutinesApi
 internal class HomeViewModelTest {
@@ -35,93 +32,92 @@ internal class HomeViewModelTest {
     @RelaxedMockK
     lateinit var getTVShows: GetTVShows
 
-    @RelaxedMockK
-    lateinit var observer: EventObserver<HomeViewState>
-
     private lateinit var sut: HomeViewModel
-    private lateinit var captor: MutableList<Event<HomeViewState>>
 
     @BeforeTest
     fun setUp() {
         Dispatchers.setMain(dispatcher)
         MockKAnnotations.init(this)
-        captor = mutableListOf()
         sut = HomeViewModel(getTVShows)
     }
 
     @AfterTest
     fun tearDown() {
         Dispatchers.resetMain()
-        captor.clear()
     }
 
     @Test
     fun `GIVEN viewModel WHEN Init success THEN fetch first page`() {
-        sut.viewState.observeForever(observer)
-        val page = Page(1, 10, listOf())
+        val item = TVShow(1, "foo", "foo.jpg")
+        val expectedState = HomeState(
+            list = listOf(item),
+            isLoading = false,
+            sortType = SortType.TopRated
+        )
 
+        val page = Page(1, 10, listOf(item))
         coEvery { getTVShows(any()) } returns flowOf(page)
 
         runBlocking {
             sut.dispatch(HomeEvent.Init)
-            verify { observer.onChanged(capture(captor)) }
+            val currentState = sut.state.value
 
             coVerify { getTVShows(null) }
 
-            assertEquals(2, captor.size)
-            assertIs<HomeViewState.Loading>(captor[0].get())
-            assertIs<HomeViewState.BindTVShows>(captor[1].get())
+            assertEquals(expectedState, currentState)
         }
     }
 
     @Test
     fun `GIVEN viewModel WHEN GetNextPage success THEN fetch next page`() {
-        sut.viewState.observeForever(observer)
-        val page = Page(1, 1, listOf(TVShow(1, "foo", "foo.jpg")))
+        val item = TVShow(1, "foo", "foo.jpg")
+        val expectedState = HomeState(
+            list = listOf(item),
+            isLoading = false,
+            sortType = SortType.TopRated
+        )
 
+        val page = Page(1, 10, listOf(item))
         coEvery { getTVShows(any()) } returns flowOf(page)
 
         runBlocking {
             sut.dispatch(HomeEvent.Init)
             sut.dispatch(HomeEvent.GetNextPage)
-
-            verify { observer.onChanged(capture(captor)) }
+            val currentState = sut.state.value
 
             coVerify {
                 getTVShows(null)
                 getTVShows(page)
             }
 
-            assertEquals(4, captor.size)
-            assertIs<HomeViewState.Loading>(captor[2].get())
-            assertIs<HomeViewState.BindTVShows>(captor[3].get())
+            assertEquals(expectedState, currentState)
         }
     }
 
     @Test
     fun `GIVEN viewModel WHEN GetNextPage empty list THEN stop fetching`() {
-        sut.viewState.observeForever(observer)
-        val page = Page(1, 1, listOf())
+        val expectedState = HomeState(
+            list = listOf(),
+            isLoading = false,
+            sortType = SortType.TopRated
+        )
 
-        coEvery { getTVShows(any()) } returns flowOf(page)
+        val page = Page(1, 10, listOf())
+        coEvery { getTVShows(null) } returns flowOf(page)
 
         runBlocking {
             sut.dispatch(HomeEvent.Init)
             sut.dispatch(HomeEvent.GetNextPage)
+            val currentState = sut.state.value
 
-            verify { observer.onChanged(capture(captor)) }
+            coVerify(exactly = 0) { getTVShows(page) }
 
-            coVerify(exactly = 1) { getTVShows(any()) }
-
-            assertEquals(2, captor.size)
-            assertIs<HomeViewState.Loading>(captor[0].get())
-            assertIs<HomeViewState.BindTVShows>(captor[1].get())
+            assertEquals(expectedState, currentState)
         }
     }
 
     @Test
     fun `GIVEN viewModel WHEN ToggleSorting empty list THEN stop fetching`() {
-        sut.viewState.observeForever(observer)
         val page = Page(
             1,
             2,
@@ -147,19 +143,21 @@ internal class HomeViewModelTest {
         runBlocking {
             sut.dispatch(HomeEvent.Init)
             sut.dispatch(HomeEvent.GetNextPage)
+            val prevState = sut.state.value
+
             sut.dispatch(HomeEvent.ToggleSorting)
+            val currentState = sut.state.value
 
-            verify { observer.onChanged(capture(captor)) }
+            coVerify {
+                getTVShows(null)
+                getTVShows(page)
+            }
 
-            assertEquals(5, captor.size)
+            assertEquals(SortType.TopRated, prevState.sortType)
+            assertEquals("C, B, X, D, A, Z", prevState.list.joinToString { it.title })
 
-            assertIs<HomeViewState.BindTVShows>(captor[3].get())
-            val topRatedSorting = captor[3].forceGet() as HomeViewState.BindTVShows
-            assertEquals("C, B, X, D, A, Z", topRatedSorting.items.joinToString { it.title })
-
-            assertIs<HomeViewState.BindTVShows>(captor[4].get())
-            val alphabetSorting = captor[4].forceGet() as HomeViewState.BindTVShows
-            assertEquals("A, B, C, D, X, Z", alphabetSorting.items.joinToString { it.title })
+            assertEquals(SortType.Alphabetic, currentState.sortType)
+            assertEquals("A, B, C, D, X, Z", currentState.list.joinToString { it.title })
         }
     }
 }
