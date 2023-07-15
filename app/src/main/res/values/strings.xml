@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TopRatedShow</string>
+    <string name="app_name">Top Rated TV Shows</string>
+
+    <string name="tv_show_image_description">tv show poster</string>
+    <string name="loading">Loading</string>
+    <string name="action_sort">Sort</string>
 </resources>
