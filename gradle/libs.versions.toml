@@ -1,5 +1,4 @@
 [versions]
-androidApplication = "8.0.2"
 androidKotlin = "1.9.0"
 ktlint = "11.3.2"
 detekt = "1.22.0-RC3"
@@ -12,7 +11,6 @@ appcompat = "1.6.1"
 coil = "2.4.0"
 constraint = "2.1.4"
 material = "1.9.0"
-room = "2.6.0-alpha01"
 retrofit = "2.9.0"
 okhhtp = "4.11.0"
 core-test = "2.2.0"
@@ -22,7 +20,7 @@ mockk = "1.13.5"
 ui-junit = "1.1.4"
 
 [plugins]
-plugin-application = { id = "com.android.application", version.ref = "androidApplication" }
+plugin-application = { id = "com.android.application", version = "8.0.2" }
 plugin-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "androidKotlin" }
 plugin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 plugin-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
@@ -40,7 +38,6 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 nav-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 nav-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 
-room-kapt = { module = "androidx.room:room-compiler", version.ref = "room" }
 moshi-kapt = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 hilt-kapt = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-test-kapt = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
@@ -51,8 +48,6 @@ moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 
 # Test
 core-test = { module = "androidx.arch.core:core-testing", version.ref = "core-test" }
@@ -63,5 +58,5 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 [bundles]
 common = ["android-core", "hilt", "timber"]
 ui = ["appcompat", "coil", "constraint", "material", "nav-fragment", "nav-ui"]
-data = ["logging", "okhttp", "moshi-adapters", "moshi-kotlin", "retrofit", "retrofit-moshi", "room-ktx", "room-runtime"]
+data = ["logging", "okhttp", "moshi-adapters", "moshi-kotlin", "retrofit", "retrofit-moshi"]
 test = ["core-test", "coroutines-test", "kotlin-junit", "mockk"]

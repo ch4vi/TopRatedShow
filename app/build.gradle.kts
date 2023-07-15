@@ -77,7 +77,6 @@ dependencies {
 
     kapt(libs.hilt.kapt)
     kapt(libs.moshi.kapt)
-    kapt(libs.room.kapt)
     implementation(libs.bundles.data)
 
     testImplementation(libs.bundles.test)
