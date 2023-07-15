@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ch4vi.distilled.featureTVShows.domain.model.Failure
 import com.ch4vi.distilled.featureTVShows.domain.model.Page
+import com.ch4vi.distilled.featureTVShows.domain.model.SortType
 import com.ch4vi.distilled.featureTVShows.domain.model.TVShow
 import com.ch4vi.distilled.featureTVShows.domain.usecase.GetTVShows
 import com.ch4vi.distilled.featureTVShows.domain.util.Event
@@ -27,10 +28,6 @@ sealed class HomeViewState {
     object Loading : HomeViewState()
     data class NetworkError(val message: String?) : HomeViewState()
     object GenericError : HomeViewState()
-}
-
-enum class SortType {
-    TopRated, Alphabetic
 }
 
 @HiltViewModel
