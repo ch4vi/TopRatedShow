@@ -2,14 +2,13 @@
 
 import io.gitlab.arturbosch.detekt.Detekt
 
-ext {
-    extra.apply {
-        set("versionName", "1.0.0")
-        set("versionCode", 1)
-        set("compileVersion", 33)
-        set("targetVersion", 33)
-        set("minVersion", 30)
-    }
+
+extra.apply {
+    set("versionName", "1.0.0")
+    set("versionCode", 1)
+    set("compileVersion", 34)
+    set("targetVersion", 33)
+    set("minVersion", 30)
 }
 
 plugins {

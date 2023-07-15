@@ -52,7 +52,10 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
-        viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
     packaging {
         resources {
@@ -74,10 +77,10 @@ dependencies {
 
     implementation(libs.bundles.common)
     implementation(libs.bundles.ui)
+    debugImplementation(libs.bundles.debug)
 
     kapt(libs.hilt.kapt)
     kapt(libs.moshi.kapt)
-    kapt(libs.room.kapt)
     implementation(libs.bundles.data)
 
     testImplementation(libs.bundles.test)
