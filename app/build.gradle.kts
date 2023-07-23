@@ -21,7 +21,7 @@ android {
         versionCode = 1
         versionName = rootProject.extra["versionName"] as String
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.ch4vi.distilled.TopRatedShowTestRunner"
     }
 
     buildTypes {
@@ -80,6 +80,9 @@ dependencies {
     implementation(libs.bundles.data)
 
     testImplementation(libs.bundles.test)
+
+    kaptAndroidTest(libs.hilt.kapt)
+    androidTestImplementation(libs.bundles.uitest)
 }
 
 kapt {

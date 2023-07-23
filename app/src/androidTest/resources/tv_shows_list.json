@@ -1,0 +1,111 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "backdrop_path": "/84XPpjGvxNyExjSuLQe0SzioErt.jpg",
+      "first_air_date": "2008-01-20",
+      "genre_ids": [
+        18,
+        80
+      ],
+      "id": 1396,
+      "name": "Breaking Bad 2",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Breaking Bad",
+      "overview": "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+      "popularity": 258.877,
+      "poster_path": "/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+      "vote_average": 8.9,
+      "vote_count": 12014
+    },
+    {
+      "backdrop_path": "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
+      "first_air_date": "2021-11-06",
+      "genre_ids": [
+        16,
+        18,
+        10765,
+        10759
+      ],
+      "id": 94605,
+      "name": "Arcane",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Arcane",
+      "overview": "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.",
+      "popularity": 58.605,
+      "poster_path": "/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+      "vote_average": 8.8,
+      "vote_count": 3171
+    },
+    {
+      "backdrop_path": "/pb8Z3Ef6CFjpm87hKW3DfdUge3J.jpg",
+      "first_air_date": "2022-11-03",
+      "genre_ids": [
+        99
+      ],
+      "id": 213762,
+      "name": "Be Eternal: Champions of America",
+      "origin_country": [
+        "AR"
+      ],
+      "original_language": "es",
+      "original_name": "Sean eternos: Campeones de América",
+      "overview": "This series takes an unprecedented closeup look at Lionel Messi and the Argentine team's battle to break a 28-year title drought in 2021's Copa América.",
+      "popularity": 12.794,
+      "poster_path": "/kBlqr507IV9bDKHLEFBtEtTfCw3.jpg",
+      "vote_average": 8.7,
+      "vote_count": 125
+    },
+    {
+      "backdrop_path": "/a6ptrTUH1c5OdWanjyYtAkOuYD0.jpg",
+      "first_air_date": "1999-10-20",
+      "genre_ids": [
+        10759,
+        35,
+        16
+      ],
+      "id": 37854,
+      "name": "One Piece",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "ワンピース",
+      "overview": "Years ago, the fearsome Pirate King, Gol D. Roger was executed leaving a huge pile of treasure and the famous One Piece behind. Whoever claims the One Piece will be named the new King of the Pirates",
+      "popularity": 124.469,
+      "poster_path": "/fcXdJlbSdUEeMSJFsXKsznGwwok.jpg",
+      "vote_average": 8.7,
+      "vote_count": 3836
+    },
+    {
+      "backdrop_path": "/uGy4DCmM33I7l86W7iCskNkvmLD.jpg",
+      "first_air_date": "2013-12-02",
+      "genre_ids": [
+        16,
+        35,
+        10765,
+        10759
+      ],
+      "id": 60625,
+      "name": "Rick and Morty",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Rick and Morty",
+      "overview": "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+      "popularity": 294.982,
+      "poster_path": "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+      "vote_average": 8.7,
+      "vote_count": 8389
+    }
+  ],
+  "total_pages": 147,
+  "total_results": 2922
+}

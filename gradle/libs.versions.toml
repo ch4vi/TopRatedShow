@@ -17,7 +17,10 @@ core-test = "2.2.0"
 coroutines-test = "1.7.0"
 junit = "4.13.2"
 mockk = "1.13.5"
-ui-junit = "1.1.4"
+ui-junit = "1.1.5"
+barista = "4.3.0"
+ui-core-test = "1.5.0"
+mockwebserver = "4.6.0"
 
 [plugins]
 plugin-application = { id = "com.android.application", version = "8.0.2" }
@@ -55,8 +58,17 @@ coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", ve
 kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "androidKotlin" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
+# UI Test
+ui-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "ui-junit" }
+ui-core-test = { module = "androidx.test:core-ktx", version.ref = "ui-core-test" }
+ui-hilt = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+barista = { module = "com.adevinta.android:barista", version.ref = "barista" }
+mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "mockwebserver" }
+
+
 [bundles]
 common = ["android-core", "hilt", "timber"]
 ui = ["appcompat", "coil", "constraint", "material", "nav-fragment", "nav-ui"]
 data = ["logging", "okhttp", "moshi-adapters", "moshi-kotlin", "retrofit", "retrofit-moshi"]
 test = ["core-test", "coroutines-test", "kotlin-junit", "mockk"]
+uitest = ["ui-junit-ktx", "ui-hilt", "barista", "ui-core-test", "mockwebserver"]
