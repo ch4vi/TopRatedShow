@@ -53,7 +53,7 @@ internal class HomeFragmentTest {
     }
 
     @Test
-    fun homeLIstIsNotEmpty() {
+    fun homeListIsNotEmpty() {
         scenario = launchActivity()
 
         assertListItemCount(R.id.tvShowsList, 5)
