@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.bundles.common)
     implementation(libs.bundles.ui)
 
+    kapt(libs.room.kapt)
     kapt(libs.hilt.kapt)
     kapt(libs.moshi.kapt)
     implementation(libs.bundles.data)
