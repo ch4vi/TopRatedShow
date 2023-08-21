@@ -24,7 +24,7 @@ ui-core-test = "1.5.0"
 mockwebserver = "4.6.0"
 
 [plugins]
-plugin-application = { id = "com.android.application", version = "8.0.2" }
+plugin-application = { id = "com.android.application", version = "8.1.0" }
 plugin-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "androidKotlin" }
 plugin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 plugin-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

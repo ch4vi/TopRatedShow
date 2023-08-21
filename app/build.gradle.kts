@@ -11,17 +11,17 @@ plugins {
 val appName = "Top Rated TV Shows"
 
 android {
-    namespace = "com.ch4vi.distilled"
+    namespace = "com.ch4vi.topRatedShows"
     compileSdk = rootProject.extra["compileVersion"] as Int?
 
     defaultConfig {
-        applicationId = "com.ch4vi.distilled"
+        applicationId = "com.ch4vi.topRatedShows"
         minSdk = rootProject.extra["minVersion"] as Int
         targetSdk = rootProject.extra["targetVersion"] as Int
         versionCode = 1
         versionName = rootProject.extra["versionName"] as String
 
-        testInstrumentationRunner = "com.ch4vi.distilled.TopRatedShowTestRunner"
+        testInstrumentationRunner = "com.ch4vi.topRatedShows.TopRatedShowTestRunner"
     }
 
     buildTypes {

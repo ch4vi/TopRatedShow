@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ch4vi.distilled.featureTVShows.presentation.home.HomeFragment"
+        android:name="com.ch4vi.topRatedShows.featureTVShows.presentation.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
 </navigation>
